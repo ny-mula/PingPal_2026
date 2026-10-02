@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PingPal — Your Personal AI Companion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf4 100%);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #6c63ff 0%, #4a47a3 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom:  ️10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width:  ️600px;
+            margin:  ️0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width:  ️900px;
+            margin:  ️40px auto;
+            padding: 0 20px;
+        }
+
+        /* Step cards */
+        .step {
+            background: white;
+            border-radius:  ️16px;
+            padding: 30px;
+            margin-bottom:  ️24px;
+            box-shadow:  ️0 4px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            gap:  ️20px;
+            align-items: flex-start;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .step-number {
+            background: #6c63ff;
+            color: white;
+            width:  ️48px;
+            height:  ️48px;
+            border-radius:  ️50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size:  ️1.4rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h2 {
+            font-size:  ️1.4rem;
+            color: #1a1a2e;
+            margin-bottom:  ️8px;
+        }
+
+        .step-content p {
+            color: #555;
+        }
+
+        /* Creators */
+        .creators {
+            background: white;
+            border-radius:  ️16px;
+            padding:  ️30px;
+            margin:  ️40px auto;
+            max-width:  ️900px;
+            text-align: center;
+            box-shadow:  ️0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .creators h2 {
+            color: #1a1a2e;
+            margin-bottom:  ️15px;
+        }
+
+        .creators .names {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap:  ️15px;
+        }
+
+        .creators .name {
+            background: #f0f0ff;
+            color: #4a47a3;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding:  ️40px 20px;
+            color: #888;
+            font-size:  ️0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size:  ️2.2rem;
+            }
+
+            .step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>🤖 PingPal</h1>
+        <p>Your personal AI companion — always there to help with food, questions, research, ideas, and more.</p>
+    </header>
+
+    <!-- Steps -->
+    <div class="container">
+
+        <!-- Step 1 -->
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h2>Open the AI Pal</h2>
+                <p>Tap the PingPal icon whenever you need help with food, questions, research, ideas, and more.</p>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h2>Chat Like a Friend</h2>
+                <p>You'll land in a private chat room. Just type your question or request, and PingPal answers.</p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h2>Let It Remember You</h2>
+                <p>PingPal remembers your past conversations, so over time it learns what you like and what you've researched. That means better, more personal recommendations — no need to repeat yourself.</p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h2>Talk Instead of Typing</h2>
+                <p>Prefer to speak? Use voice commands to chat with PingPal hands-free, like an Alexa that's specialized in recommendations.</p>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h2>Make It Yours</h2>
+                <p>PingPal is the default name, but you can customize it to whatever you like.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Creators -->
+    <div class="creators">
+        <h2>Created by</h2>
+        <div class="names">
+            <span class="name">Ny'asia</span>
+            <span class="name">Varsha</span>
+            <span class="name">Samantha</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>PingPal — Your personal AI companion. Created by Ny'asia, Varsha, and Samantha.</p>
+    </footer>
+
+</body>
+</html>
