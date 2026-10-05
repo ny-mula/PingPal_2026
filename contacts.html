@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Pal — Contact Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8fbc8f 0%, #008080 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        header h1 span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity:  ⁰.9;
+        }
+
+        .support-hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .support-hero h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .support-hero p {
+            font-size: 1.1rem;
+            opacity:  ⁰.9;
+            max-width:  ⁶00px;
+            margin:  ⁰ auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow:  ⁰ 10px 30px rgba(0, 0, 0, ⁰.2);
+            margin-bottom: 30px;
+        }
+
+        .card h2 {
+            color: #008080;
+            margin-bottom: 15px;
+        }
+
+        /* Contact cards */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border:  ⁰ 3px solid #e0e0e0;
+            border-radius: 12px;
+            padding:  ⁰ 25px;
+            text-align: center;
+            transition: all ⁰.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow:  ⁰ 8px 20px rgba(0, 0, 0, ⁰.15);
+        }
+
+        .contact-card .avatar {
+            font-size:  ⁰ 3rem;
+            margin-bottom:  ⁰ 10px;
+        }
+
+        .contact-card h3 {
+            color: #333;
+            margin-bottom:  ⁰ 8px;
+        }
+
+        .contact-card p {
+            font-size:  ⁰.9rem;
+            color: #666;
+            margin-bottom:  ⁰ 15px;
+            word-break: break-all;
+        }
+
+        .btn {
+            display: inline-block;
+            padding:  ⁰ 12px 20px;
+            border: none;
+            border-radius:  ⁰ 8px;
+            cursor: pointer;
+            font-size:  ⁰ 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all ⁰.3s ease;
+        }
+
+        .btn-primary {
+            background: #008080;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #006666;
+        }
+
+        /* Info row */
+        .info-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap:  ⁰ 20px;
+            margin-top:  ⁰ 20px;
+        }
+
+        .info-item {
+            text-align: center;
+            padding:  ⁰ 15px;
+            background: #f0f7f0;
+            border-radius:  ⁰ 10px;
+        }
+
+        .info-item .icon {
+            font-size:  ⁰ 2rem;
+            margin-bottom:  ⁰ 8px;
+        }
+
+        .info-item h4 {
+            color: #008080;
+            margin-bottom:  ⁰ 5px;
+        }
+
+        .info-item p {
+            font-size:: ⁰.9rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            opacity:: ⁰.8;
+            margin-top:  ⁰ 20px;
+            font-size:: ⁰.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span>🎯 Ping Pal</span></h1>
+            <p>Your AI pal for anything you need</p>
+        </header>
+
+        <div class="support-hero">
+            <h2>📬 Contact Support</h2>
+            <p>Need help with Ping Pal? Reach out to any of us — we're here to help!</p>
+        </div>
+
+        <div class="card">
+            <h2>👋 Meet the Team</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="avatar">👩🏽</div>
+                    <h3>Varsha</h3>
+                    <p>varshap2@nycstudents.net</p>
+                    <a class="btn btn-primary" href="mailto:varshap2@nycstudents.net">Email Varsha</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="avatar">👩🏾</div>
+                    <h3>Ny'asia</h3>
+                    <p>nyasiam44@nycstudents.net</p>
+                    <a class="btn btn-primary" href="mailto:nyasiam44@nycstudents.net">Email Ny'asia</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="avatar">👩🏻</div>
+                    <h3>Samantha</h3>
+                    <p>samanthap260@nycstudents.net</p>
+                    <a class="btn btn-primary" href="mailto:samanthap260@nycstudents.net">Email Samantha</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>💡 How to Reach Us</h2>
+            <div class="info-row">
+                <div class="info-item">
+                    <div class="icon">📧</div>
+                    <h4>Email</h4>
+                    <p>Tap any team member's button above to send an email.</p>
+                </div>
+                <div class="info-item">
+                    <div class="icon">⏱️</div>
+                    <h4>Response Time</h4>
+                    <p>We usually reply within 1–2 days.</p>
+                </div>
+                <div class="info-item">
+                    <div class="icon">💚</div>
+                    <h4>We're Here</h4>
+                    <p>Questions, feedback, or bugs — don't hesitate to reach out!</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>Ping Pal — created with ❤️ by Ny'asia, Varsha &amp; Samantha</footer>
+    </div>
+</body>
+</html>
