@@ -54,6 +54,29 @@
             font-style: italic;
         }
 
+        /* Contact nav button */
+        .contact-nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-nav a:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+
         .card {
             background: white;
             border-radius: 16px;
@@ -286,6 +309,11 @@
             <div class="creators">Created by Ny'asia, Varsha &amp; Samantha</div>
         </header>
 
+        <!-- Contact Support button -->
+        <div class="contact-nav">
+            <a href="contacts.html">📬 Contact Support</a>
+        </div>
+
         <div class="card" id="chooseCard">
             <h2>🤖 What do you need your AI pal for?</h2>
             <p>Pick a focus area and Ping Pal will tailor its help to you.</p>
@@ -372,7 +400,6 @@
         let currentType = 'general';
 
         function selectOption(el) {
-            // Remove selected from all
             document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
             el.classList.add('selected');
 
@@ -384,11 +411,9 @@
                 'general': '💬 General Advice Pal'
             };
 
-            // Show chat area
             document.getElementById('chatArea').style.display = 'block';
             document.getElementById('chatTitle').textContent = titles[currentType];
 
-            // Welcome message based on selection
             const welcomes = {
                 'organization': "Great choice! I'll help you build routines, set reminders, and stay on track. What would you like to organize today? 📋",
                 'planning': "Awesome! I'm here to help you plan and decide. What do you need to plan? A meal, an event, something else? 🍽️",
@@ -398,7 +423,6 @@
 
             document.getElementById('chatBox').innerHTML = '<div class="message bot-msg">' + welcomes[currentType] + '</div>';
 
-            // Scroll to chat
             document.getElementById('chatArea').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -409,13 +433,11 @@
 
             const chatBox = document.getElementById('chatBox');
 
-            // Add user message
             const userDiv = document.createElement('div');
             userDiv.className = 'message user-msg';
             userDiv.textContent = msg;
             chatBox.appendChild(userDiv);
 
-            // Add bot reply
             const botDiv = document.createElement('div');
             botDiv.className = 'message bot-msg';
             botDiv.textContent = getBotReply(msg, currentType);
@@ -428,7 +450,6 @@
         function getBotReply(msg, type) {
             const lower = msg.toLowerCase();
 
-            // ===== ORGANIZATION & ROUTINE =====
             if (type === 'organization') {
                 if (lower.includes('routine') || lower.includes('schedule') || lower.includes('checklist') || lower.includes('plan my day')) {
                     return "Here's a simple daily routine you can start with:\n\n🌅 Morning: Wake up, drink water, 10-min stretch\n📚 Work/Study: 25-min focus blocks (Pomodoro)\n🥗 Lunch: Healthy meal + short walk\n✅ Evening: Review your checklist, plan tomorrow\n\nWant me to add notifications or adjust the times?";
@@ -445,7 +466,6 @@
                 return "I can help you stay organized! Tell me what tasks you need to get done today, and I'll build you a checklist with reminders. 📋 What's on your plate?";
             }
 
-            // ===== PLANNING & DECISIONS =====
             if (type === 'planning') {
                 if (lower.includes('meal') || lower.includes('dinner') || lower.includes('lunch') || lower.includes('food') || lower.includes('cook') || lower.includes('recipe')) {
                     return "Let's plan your meal! 🍽️ Tell me: 1) How many people are you feeding? 2) Any dietary restrictions or allergies? 3) Do you have a theme in mind (Italian, BBQ, comfort food)? Once I know that, I'll suggest a full menu with a shopping list and prep schedule.";
@@ -462,7 +482,6 @@
                 return "I'm your planning pal! Tell me what you need to plan — a meal, an event, a project, a decision — and I'll break it down into easy steps. ✅ What are we planning?";
             }
 
-            // ===== FITNESS & GOALS =====
             if (type === 'fitness') {
                 if (lower.includes('protein') || lower.includes('nutrition') || lower.includes('eat') || lower.includes('diet')) {
                     return "Great question! Best protein sources:\n\n🥩 Chicken breast — 31g per 100g\n🐟 Salmon — 25g per 100g\n🥚 Eggs — 13g per 2 eggs\n🫘 Lentils — 18g per cup (plant-based)\n🥛 Greek yogurt — 17g per 170g\n\nAim for about 1.6–2.2g of protein per kg of body weight daily. Want a sample meal plan?";
@@ -482,7 +501,6 @@
                 return "Let's get you on your fitness journey! Ask me about workouts, protein, nutrition, gym etiquette, or rest — I've got you. 💪 What's your goal?";
             }
 
-            // ===== GENERAL ADVICE =====
             if (lower.includes('motivat') || lower.includes('tired') || lower.includes('stuck')) {
                 return "Hey, I hear you. Take a deep breath — you don't have to do everything at once. Pick ONE small step you can do in the next 10 minutes, and start there. What's the one thing that's been on your mind? I'll help you take that first step. 💛";
             }
@@ -499,7 +517,6 @@
                 return "I'm here to help! Tell me what's going on and I'll do my best to help you sort it out. What do you need?";
             }
 
-            // Smart fallback: actually try to understand the question
             if (lower.includes('how') || lower.includes('what') || lower.includes('when') || lower.includes('why') || lower.includes('should')) {
                 return "Good question! Let's think it through together. Tell me a bit more detail about what you're facing, and I'll give you a real, practical answer. What's the situation?";
             }
@@ -513,7 +530,6 @@
                 return "Let's dig into that! Tell me a bit more context about what you're asking, and I'll give you a real answer that actually helps. What's the situation?";
             }
 
-            // Last resort — still helpful, not dismissive
             return "Let's work through this together! Tell me a little more about what you're dealing with — the more detail you give me, the better I can help. What's going on?";
         }
 
