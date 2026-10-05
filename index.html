@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8fbc8f 0%, #008080 100%);
             min-height: 100vh;
             padding: 20px;
             color: #333;
@@ -63,7 +63,7 @@
         }
 
         .card h2 {
-            color: #667eea;
+            color: #008080;
             margin-bottom: 15px;
         }
 
@@ -90,8 +90,8 @@
         }
 
         .option.selected {
-            border-color: #667eea;
-            background: #f0f3ff;
+            border-color: #8fbc8f;
+            background: #f0f7f0;
         }
 
         .option .icon {
@@ -133,7 +133,7 @@
         }
 
         .user-msg {
-            background: #667eea;
+            background: #008080;
             color: white;
             margin-left: auto;
             border-bottom-right-radius: 4px;
@@ -160,7 +160,7 @@
 
         .input-row input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #008080;
         }
 
         .btn {
@@ -174,12 +174,12 @@
         }
 
         .btn-primary {
-            background: #667eea;
+            background: #008080;
             color: white;
         }
 
         .btn-primary:hover {
-            background: #5a6fd6;
+            background: #006666;
         }
 
         .btn-secondary {
@@ -206,7 +206,7 @@
         }
 
         .story h4 {
-            color: #764ba2;
+            color: #8fbc8f;
             margin-bottom: 8px;
         }
 
@@ -218,13 +218,55 @@
 
         .story .tag {
             display: inline-block;
-            background: #f0f3ff;
-            color: #667eea;
+            background: #f0f7f0;
+            color: #008080;
             padding: 4px 10px;
             border-radius: 15px;
             font-size: 0.8rem;
             margin-top: 10px;
             font-weight: bold;
+        }
+
+        /* Rating section */
+        .rating-card {
+            text-align: center;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .star {
+            font-size: 3rem;
+            cursor: pointer;
+            color: #ddd;
+            transition: all 0.2s ease;
+        }
+
+        .star.selected {
+            color: #8fbc8f;
+            transform: scale(1.1);
+        }
+
+        .star:hover {
+            transform: scale(1.2);
+        }
+
+        .rating-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .rating-message {
+            font-size: 1.1rem;
+            color: #008080;
+            font-weight: bold;
+            margin-top: 10px;
+            min-height: 30px;
         }
 
         footer {
@@ -310,6 +352,19 @@
             </div>
         </div>
 
+        <div class="card rating-card">
+            <h2>⭐ Rate Ping Pal</h2>
+            <p class="rating-note">Tap the stars to rate the app. Please rate us 4 or 5 stars — it helps us grow! 💚</p>
+            <div class="stars" id="stars">
+                <span class="star" onclick="rate(1)">★</span>
+                <span class="star" onclick="rate(2)">★</span>
+                <span class="star" onclick="rate(3)">★</span>
+                <span class="star" onclick="rate(4)">★</span>
+                <span class="star" onclick="rate(5)">★</span>
+            </div>
+            <div class="rating-message" id="ratingMsg"></div>
+        </div>
+
         <footer>Ping Pal — created with ❤️ by Ny'asia, Varsha &amp; Samantha</footer>
     </div>
 
@@ -360,7 +415,7 @@
             userDiv.textContent = msg;
             chatBox.appendChild(userDiv);
 
-            // Add bot reply (simple mock AI response)
+            // Add bot reply
             const botDiv = document.createElement('div');
             botDiv.className = 'message bot-msg';
             botDiv.textContent = getBotReply(msg, currentType);
@@ -373,44 +428,93 @@
         function getBotReply(msg, type) {
             const lower = msg.toLowerCase();
 
+            // ===== ORGANIZATION & ROUTINE =====
             if (type === 'organization') {
-                if (lower.includes('routine') || lower.includes('schedule') || lower.includes('checklist')) {
+                if (lower.includes('routine') || lower.includes('schedule') || lower.includes('checklist') || lower.includes('plan my day')) {
                     return "Here's a simple daily routine you can start with:\n\n🌅 Morning: Wake up, drink water, 10-min stretch\n📚 Work/Study: 25-min focus blocks (Pomodoro)\n🥗 Lunch: Healthy meal + short walk\n✅ Evening: Review your checklist, plan tomorrow\n\nWant me to add notifications or adjust the times?";
                 }
-                if (lower.includes('remind') || lower.includes('remember')) {
-                    return "I'll help you remember! Tell me the task and when you want to be reminded, and I'll add it to your checklist with a notification. ⏰";
+                if (lower.includes('remind') || lower.includes('remember') || lower.includes('forget')) {
+                    return "I'll help you remember! Tell me the task and when you want to be reminded, and I'll add it to your checklist with a notification. ⏰ What's the task?";
                 }
-                return "I can help you stay organized! Try telling me what tasks you need to get done today, and I'll build you a checklist with reminders. 📋";
+                if (lower.includes('time') || lower.includes('manage') || lower.includes('procrastinat') || lower.includes('focus')) {
+                    return "Let's beat procrastination together! 🎯 Try the Pomodoro method: 25 minutes of focused work, then a 5-minute break. Repeat 4 times, then take a longer 15–30 min break. What's the task you're putting off? I'll help you break it into tiny first steps.";
+                }
+                if (lower.includes('homework') || lower.includes('study') || lower.includes('school') || lower.includes('assignment')) {
+                    return "Let's break your homework down! 📚 1) List every task, 2) Number them by deadline, 3) Start with the shortest one to build momentum. Tell me what assignments you have and their due dates, and I'll help you make a plan.";
+                }
+                return "I can help you stay organized! Tell me what tasks you need to get done today, and I'll build you a checklist with reminders. 📋 What's on your plate?";
             }
 
+            // ===== PLANNING & DECISIONS =====
             if (type === 'planning') {
-                if (lower.includes('meal') || lower.includes('dinner') || lower.includes('food') || lower.includes('cook')) {
-                    return "Planning a meal? Here's a simple 3-step approach:\n\n1️⃣ Pick a theme (e.g., Italian, BBQ)\n2️⃣ Choose a main dish + 2 sides\n3️⃣ Make a shopping list & prep schedule\n\nTell me how many people you're feeding and I'll suggest a full menu! 🍽️";
+                if (lower.includes('meal') || lower.includes('dinner') || lower.includes('lunch') || lower.includes('food') || lower.includes('cook') || lower.includes('recipe')) {
+                    return "Let's plan your meal! 🍽️ Tell me: 1) How many people are you feeding? 2) Any dietary restrictions or allergies? 3) Do you have a theme in mind (Italian, BBQ, comfort food)? Once I know that, I'll suggest a full menu with a shopping list and prep schedule.";
                 }
-                if (lower.includes('event') || lower.includes('party') || lower.includes('reunion')) {
-                    return "Let's plan your event step by step:\n\n📅 Set the date & guest list\n🍽️ Choose the menu\n🛒 Make a shopping list\n⏰ Create a prep timeline\n\nWhat's the event and how many guests?";
+                if (lower.includes('event') || lower.includes('party') || lower.includes('reunion') || lower.includes('birthday') || lower.includes('wedding')) {
+                    return "Let's plan your event step by step! 📅 1) Set the date and guest list, 2) Choose the menu, 3) Make a shopping list, 4) Create a prep timeline. Tell me what the event is and how many guests, and I'll build the plan with you.";
                 }
-                return "I'm your planning pal! Tell me what you need to plan — a meal, an event, a project — and I'll break it down into easy steps. ✅";
+                if (lower.includes('decide') || lower.includes('choice') || lower.includes('choose') || lower.includes("can't decide") || lower.includes('cant decide')) {
+                    return "Decision time! 🤔 Here's a quick way to choose: 1) List your top 2 options, 2) Write one pro and one con for each, 3) Ask yourself 'which one would I regret NOT trying?' Tell me what you're deciding between and I'll help you weigh it.";
+                }
+                if (lower.includes('budget') || lower.includes('money') || lower.includes('cost') || lower.includes('cheap') || lower.includes('spend')) {
+                    return "Let's keep it budget-friendly! 💰 Tell me your total budget first, then I'll suggest affordable options for whatever you're planning — meal, event, or otherwise. What's your budget number?";
+                }
+                return "I'm your planning pal! Tell me what you need to plan — a meal, an event, a project, a decision — and I'll break it down into easy steps. ✅ What are we planning?";
             }
 
+            // ===== FITNESS & GOALS =====
             if (type === 'fitness') {
-                if (lower.includes('protein')) {
+                if (lower.includes('protein') || lower.includes('nutrition') || lower.includes('eat') || lower.includes('diet')) {
                     return "Great question! Best protein sources:\n\n🥩 Chicken breast — 31g per 100g\n🐟 Salmon — 25g per 100g\n🥚 Eggs — 13g per 2 eggs\n🫘 Lentils — 18g per cup (plant-based)\n🥛 Greek yogurt — 17g per 170g\n\nAim for about 1.6–2.2g of protein per kg of body weight daily. Want a sample meal plan?";
                 }
-                if (lower.includes('workout') || lower.includes('gym') || lower.includes('start')) {
+                if (lower.includes('workout') || lower.includes('gym') || lower.includes('start') || lower.includes('exercise') || lower.includes('train')) {
                     return "Here's a beginner gym plan (3 days/week):\n\nDay 1: Full body — squats, push-ups, rows\nDay 2: Rest / light walk\nDay 3: Full body — lunges, bench press, pull-downs\nDay 4: Rest\nDay 5: Full body — deadlifts, shoulder press, planks\n\nStart light, focus on form! Want details on any exercise? 💪";
                 }
-                if (lower.includes('etiquette') || lower.includes('courtesy')) {
+                if (lower.includes('etiquette') || lower.includes('courtesy') || lower.includes('manners')) {
                     return "Gym courtesy basics:\n\n✅ Wipe down equipment after use\n✅ Re-rack your weights\n✅ Don't hog machines during busy hours\n✅ Ask before working in\n✅ Wear headphones, not speakers\n\nYou've got this! Any other fitness questions?";
                 }
-                return "Let's get you on your fitness journey! Ask me about workouts, protein, or gym etiquette — I've got you. 💪";
+                if (lower.includes('tired') || lower.includes('fatigue') || lower.includes('energy')) {
+                    return "Feeling tired is totally normal — rest is part of the journey! 😴 Make sure you're getting 7–9 hours of sleep, drinking water, and eating enough. Rest days are just as important as workout days. Want help building a gentle rest-day routine?";
+                }
+                if (lower.includes('weight') || lower.includes('lose') || lower.includes('gain') || lower.includes('body')) {
+                    return "Let's set a realistic goal! 🎯 Healthy weight goals come from small habits: balanced meals, regular movement, and consistency over perfection. Tell me your starting point and what you're aiming for, and I'll help you build a plan you can actually stick to.";
+                }
+                return "Let's get you on your fitness journey! Ask me about workouts, protein, nutrition, gym etiquette, or rest — I've got you. 💪 What's your goal?";
             }
 
-            // General
+            // ===== GENERAL ADVICE =====
             if (lower.includes('motivat') || lower.includes('tired') || lower.includes('stuck')) {
-                return "Hey, I hear you. Take a deep breath — you don't have to do everything at once. Pick ONE small step you can do in the next 10 minutes, and start there. I believe in you! 💛";
+                return "Hey, I hear you. Take a deep breath — you don't have to do everything at once. Pick ONE small step you can do in the next 10 minutes, and start there. What's the one thing that's been on your mind? I'll help you take that first step. 💛";
             }
-            return "That's a great question! Here's my take: break it into small steps, start with the easiest one, and build from there. What's the first step you'd like to try? ✅";
+            if (lower.includes('stress') || lower.includes('anxious') || lower.includes('overwhelm')) {
+                return "It sounds like a lot is on your plate right now. 🧘 Let's lighten it: 1) Write down the 3 most important things right now, 2) Cross off the one that can wait, 3) Do just the first small step of the most important one. What's weighing on you the most?";
+            }
+            if (lower.includes('sad') || lower.includes('down') || lower.includes('depress')) {
+                return "I'm sorry you're feeling down. 💙 It's okay to not be okay. Talking about it helps — what happened today? And remember, you're not alone in this. If things feel really heavy, reaching out to someone you trust can make a big difference.";
+            }
+            if (lower.includes('hi') || lower.includes('hello') || lower.includes('hey')) {
+                return "Hey hey! 👋 I'm here and ready to help! What's on your mind today?";
+            }
+            if (lower.includes('help')) {
+                return "I'm here to help! Tell me what's going on and I'll do my best to help you sort it out. What do you need?";
+            }
+
+            // Smart fallback: actually try to understand the question
+            if (lower.includes('how') || lower.includes('what') || lower.includes('when') || lower.includes('why') || lower.includes('should')) {
+                return "Good question! Let's think it through together. Tell me a bit more detail about what you're facing, and I'll give you a real, practical answer. What's the situation?";
+            }
+            if (lower.includes('i want') || lower.includes('i need')) {
+                return "Let's make it happen! Tell me more about what you want to achieve, and I'll give you concrete steps to get there. What's the goal?";
+            }
+            if (lower.includes('can')) {
+                return "Short answer: yes, you can! 💪 But let's make it practical — tell me the specific thing you're trying to do, and I'll walk you through exactly how to do it step by step.";
+            }
+            if (lower.includes('?')) {
+                return "Let's dig into that! Tell me a bit more context about what you're asking, and I'll give you a real answer that actually helps. What's the situation?";
+            }
+
+            // Last resort — still helpful, not dismissive
+            return "Let's work through this together! Tell me a little more about what you're dealing with — the more detail you give me, the better I can help. What's going on?";
         }
 
         function resetChat() {
@@ -418,7 +522,22 @@
             document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
             document.getElementById('chooseCard').scrollIntoView({ behavior: 'smooth' });
         }
+
+        function rate(n) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((s, i) => {
+                s.classList.toggle('selected', i < n);
+            });
+
+            const msg = document.getElementById('ratingMsg');
+            if (n === 4) {
+                msg.textContent = "Thank you! 🌟 We really appreciate your 4-star rating!";
+            } else if (n === 5) {
+                msg.textContent = "Amazing! 🌟🌟🌟 Thank you for the 5-star rating!";
+            } else {
+                msg.textContent = "We'd love a 4 or 5-star rating to help us grow! 💚";
+            }
+        }
     </script>
 </body>
 </html>
-
